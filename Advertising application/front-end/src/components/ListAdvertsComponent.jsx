@@ -12,19 +12,19 @@ const ListAdvertsComponent = () => {
       id: 1,
       title: "R & D",
       description: "Some Department",
-      comment: "Some Department",
+      comment: "Some Comment",
     },
     {
       id: 2,
       title: "R & D",
       description: "Some Department",
-      comment: "Some Department",
+      comment: "Some Comment",
     },
     {
       id: 3,
       title: "R & D",
       description: "Some Department",
-      comment: "Some Department",
+      comment: "Some Comment",
     },
   ];
 
@@ -41,12 +41,14 @@ const ListAdvertsComponent = () => {
                 <th>Advert Title </th>
                 <th>Advert Description </th>
                 <th>Advert Comment </th>
+                <th> </th>
+                <th>Actions </th>
 
                 {/* <th>Advert Category </th> */}
               </tr>
             </thead>
             <tbody>
-              {adverts.map((advert) => (
+              {dummyData.map((advert) => (
                 <tr key={advert.id}>
                   <td>
                     <img
