@@ -6,7 +6,7 @@ import lt.techin.exam.advertising_app.model.Advert;
 public class AdvertMapper {
 
     public static AdvertDto mapToAdvertDto(Advert advert){
-        return new AdvertDto(advert.getId(), advert.getTitle(), advert.getDescription(), advert.getComment());
+        return new AdvertDto(advert.getId(), advert.getTitle(), advert.getDescription(), advert.getComment(), advert.getCategory().getId());
     }
 
     public static Advert mapToAdvert(AdvertDto advertDto){

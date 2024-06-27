@@ -5,6 +5,7 @@ import lt.techin.exam.advertising_app.dto.AdvertDto;
 import lt.techin.exam.advertising_app.exception.ResourceNotFoundException;
 import lt.techin.exam.advertising_app.mapper.AdvertMapper;
 import lt.techin.exam.advertising_app.model.Advert;
+import lt.techin.exam.advertising_app.model.Category;
 import lt.techin.exam.advertising_app.repository.AdvertRepository;
 import lt.techin.exam.advertising_app.repository.CategoryRepository;
 import lt.techin.exam.advertising_app.service.AdvertService;
@@ -26,11 +27,15 @@ public class AdvertServiceImpl implements AdvertService {
 
         Advert advert = AdvertMapper.mapToAdvert(advertDto);
 
+        Category category = categoryRepository.findById(advertDto.getCategoryId())
+                .orElseThrow(()->
+                        new ResourceNotFoundException("Category does not exist with id: " + advertDto.getCategoryId()));
+
+        advert.setCategory(category);
 
         Advert addedAdvert = advertRepository.save(advert);
         return AdvertMapper.mapToAdvertDto(addedAdvert);
     }
-
 
     @Override
     public AdvertDto getAdvert(Long id) {
@@ -53,7 +58,6 @@ public class AdvertServiceImpl implements AdvertService {
 
     }
 
-
     @Override
     public AdvertDto updateAdvert(AdvertDto advertDto, Long id) {
 
@@ -63,8 +67,11 @@ public class AdvertServiceImpl implements AdvertService {
                 advert.setDescription(advertDto.getDescription());
                 advert.setComment(advertDto.getComment());
 
+        Category category = categoryRepository.findById(advertDto.getCategoryId())
+                .orElseThrow(()->
+                        new ResourceNotFoundException("Category does not exist with id: " + advertDto.getCategoryId()));
 
-
+        advert.setCategory(category);
 
                 Advert updatedAdvert = advertRepository.save(advert);
 

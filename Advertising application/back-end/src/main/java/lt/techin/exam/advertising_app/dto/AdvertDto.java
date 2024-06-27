@@ -15,4 +15,5 @@ public class AdvertDto {
     private String title;
     private String description;
     private String comment;
+    private Long categoryId;
 }
