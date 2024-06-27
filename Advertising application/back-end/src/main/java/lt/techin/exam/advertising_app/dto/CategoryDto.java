@@ -11,5 +11,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CategoryDto {
     private Long id;
-    private String category;
+    private String categoryName;
 }
